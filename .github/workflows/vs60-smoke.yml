@@ -26,7 +26,7 @@ jobs:
         run: |
           state=success
           if [ "$RESULT" != success ]; then state=failure; fi
-          payload=$(printf state:%s "$state")
+          payload=$(printf '{"state":"%s"}' "$state")
           curl --fail --silent --show-error --request POST \
             --header "Authorization: Bearer $GH_TOKEN" \
             --header "Accept: application/vnd.github+json" \
